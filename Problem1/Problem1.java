@@ -13,7 +13,10 @@ public class Problem1 {
 
     public static void main(String[] args) {
         readMatrix("Problem1/testinput1.txt");
+        long start = System.nanoTime();
         String type = topologyType();
+        long duration = System.nanoTime() - start;
+        System.out.println("Array sorted in " + duration + " ns");
         saveResult(type);
     }
 
