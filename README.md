@@ -1,5 +1,7 @@
 # CSCE 350 Programming Assignment
 
+I completed Problems 1-5 using the textbook and powerpoint slides as my reference.
+
 ## Compile Guide
 
 The files were tested on OpenJDK Java Version 21.0.6 on Ubuntu
@@ -78,8 +80,8 @@ The result is printed to output.txt in the same format
 
 If the distance between two vertices is infinity (no edge exists), it's represented as "inf" in the matrix. Valid example of this in input.txt:
 ```
-0 3 inf 7
-8 0 2 inf
-5 inf 0 1
-2 inf inf 0
+0.0 3.0 inf 7.0
+8.0 0.0 2.5 inf
+5.5 inf 0.0 1.0
+2.0 inf inf 0.0
 ```
