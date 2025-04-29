@@ -75,3 +75,11 @@ Valid example for input.txt:
 ```
 
 The result is printed to output.txt in the same format
+
+If the distance between two vertices is infinity (no edge exists), it's represented as "inf" in the matrix. Valid example of this in input.txt:
+```
+0 3 inf 7
+8 0 2 inf
+5 inf 0 1
+2 inf inf 0
+```
