@@ -24,42 +24,52 @@ public class Problem5 {
                 String[] parts = line.split(" ");
                 double[] row = new double[parts.length];
                 for (int i = 0; i < parts.length; i++) {
-                    row[i] = Double.parseDouble(parts[i]);
+                    if (parts[i].equalsIgnoreCase("inf")) {
+                        row[i] = Double.POSITIVE_INFINITY;
+                    } else {
+                        row[i] = Double.parseDouble(parts[i]);
+                    }
                 }
                 rows.add(row);
             }
         } catch (IOException e) {
-            System.out.println("File error: " + e.getMessage());
+            System.err.println("File error: " + e.getMessage());
             return new double[0][0];
         }
         return rows.toArray(new double[rows.size()][]);
     }
 
-
-    private static void floyd(double[][] mat) {
-        int n = mat.length;
+    private static void floyd(double[][] D) {
+        int n = D.length;
         for (int k = 0; k < n; k++) {
             for (int i = 0; i < n; i++) {
+                if (D[i][k] == Double.POSITIVE_INFINITY) continue;
                 for (int j = 0; j < n; j++) {
-                    if (mat[i][k] + mat[k][j] < mat[i][j]) {
-                        mat[i][j] = mat[i][k] + mat[k][j];
+                    if (D[k][j] == Double.POSITIVE_INFINITY) continue;
+                    double viaK = D[i][k] + D[k][j];
+                    if (viaK < D[i][j]) {
+                        D[i][j] = viaK;
                     }
                 }
             }
         }
     }
 
-    private static void writeMatrix(double[][] mat, String fileName) {
+    private static void writeMatrix(double[][] D, String fileName) {
         try (FileWriter fw = new FileWriter(fileName)) {
-            for (int i = 0; i < mat.length; i++) {
-                for (int j = 0; j < mat[i].length; j++) {
-                    fw.write(String.format("%.6f", mat[i][j]));
-                    if (j < mat[i].length - 1) fw.write(" ");
+            for (int i = 0; i < D.length; i++) {
+                for (int j = 0; j < D[i].length; j++) {
+                    if (Double.isInfinite(D[i][j])) {
+                        fw.write("inf");
+                    } else {
+                        fw.write(String.format("%.6f", D[i][j]));
+                    }
+                    if (j < D[i].length - 1) fw.write(" ");
                 }
-                fw.write(System.lineSeparator());
+                if (i < D.length - 1) fw.write(System.lineSeparator());
             }
         } catch (IOException e) {
-            System.out.println("Couldn't write output: " + e.getMessage());
+            System.err.println("Couldn't write output: " + e.getMessage());
         }
     }
 }

@@ -2,16 +2,14 @@
 
 ## Compile Guide
 
-For compiling a generic ProblemN.java, write the following code in the terminal:
+The files were tested on OpenJDK Java Version 21.0.6 on Ubuntu
+
+For compiling and executing a generic ProblemN.java, write the following code in the terminal:
 ```
 javac ProblemN/ProblemN.java
 java ProblemN/ProblemN
 ```
-The `javac` command creates a .class file that is then run by the `java` command. Optionally, you can run
-the following code to clean up after all the commands are done:
-```
-rm */Problem*.class
-```
+The `javac` command creates a .class file that is then run by the `java` command.
 
 ## Problem Input Formatting
 

@@ -12,7 +12,7 @@ public class Problem1 {
     private static int[][] matrix;
 
     public static void main(String[] args) {
-        readMatrix("Problem1/testinput1.txt");
+        readMatrix("Problem1/input.txt");
         long start = System.nanoTime();
         String type = topologyType();
         long duration = System.nanoTime() - start;
@@ -128,7 +128,7 @@ public class Problem1 {
     }
 
     public static void saveResult(String result) {
-        try (FileWriter out = new FileWriter("Problem1/output1.txt")) {
+        try (FileWriter out = new FileWriter("Problem1/output.txt")) {
             out.write(result);
         } catch (IOException e) {
             System.out.println("Couldn't write result: " + e.getMessage());
